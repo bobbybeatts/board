@@ -53,16 +53,12 @@ jib {
   from {
     image = 'adoptopenjdk/openjdk11:alpine-jre'
   }
-  to {
-    image = 'seoulit7/jib_test'
-    tags = ['5.0']
 
-  }
   container {
     entrypoint = ['java', '-Dspring.profiles.active=test', '-jar', 'board-ver1.0.jar']
 
     jvmFlags = ['-Xms512m', '-Xmx512m', '-Xdebug', '-XshowSettings:vm', '-XX:+UnlockExperimentalVMOptions', '-XX:+UseContainerSupport']
-		ports = ['8080']
+		ports = ['8888']
 
     environment = [SPRING_OUTPUT_ANSI_ENABLED: "ALWAYS"]
     labels = [version:project.version, name:project.name, group:project.group]
